@@ -1,5 +1,7 @@
+
 const key= "685d851e2a649cd92b21f6de3a19b278";
 const printingMovies = (movies)=> {
+    
     movies.forEach((movie) => {
         let picture = movie.poster_path;
         let image = `https://image.tmdb.org/t/p/w300${picture}`;
@@ -9,8 +11,20 @@ const printingMovies = (movies)=> {
         console.log(image);
         console.log(name);
         console.log(id);
-    })
+        let parent= document.getElementById('movies');
+        parent.innerHTML = mainTemplate(name, image);
+        
+    }) 
 }
+
+const mainTemplate=(name, image) => {
+    let t = `<div id= 'movies'><img src='${image}'/><p>${name}</p></div>`
+    return t;
+}
+
+
+
+
 
 
 fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}`)
@@ -42,3 +56,5 @@ fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}`)
 });
 })
 }
+
+
