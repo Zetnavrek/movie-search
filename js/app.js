@@ -1,7 +1,7 @@
 
 const key= "685d851e2a649cd92b21f6de3a19b278";
 const printingMovies = (movies)=> {
-    const container= document.querySelector('.container');
+    const container= document.getElementById('movies');
         container.innerHTML = '';
     movies.forEach((movie) => {
         let picture = movie.poster_path;
@@ -12,9 +12,10 @@ const printingMovies = (movies)=> {
         console.log(image);
         console.log(name);
         console.log(id);
-        const cardMovies = `<div class= 'container'><img src='${image}'/><p>${name}</p></div>`
+        const cardMovies = `<div class='showMovie'><img src='${image}'/><p>${name}</p></div>`
         container.innerHTML += cardMovies;   
     });
+
 }
 
 
@@ -25,6 +26,7 @@ fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}`)
 }).then((data) => {
     console.log(data);
     printingMovies(data.results);
+    document.addEventLis
     showMovies(data.results);
 }).catch((err) => {
     console.log('Ups! Ocurrio un error');
