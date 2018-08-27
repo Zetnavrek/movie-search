@@ -12,7 +12,7 @@ const printingMovies = (movies)=> {
         console.log(image);
         console.log(name);
         console.log(id);
-        const cardMovies = `<div class='showMovie'><img src='${image}'/><p>${name}</p></div>`
+        const cardMovies = `<div onclick='showMovies();' class='showMovie col-sm-6 col-md-4 col-lg-4'><img class= "img-fluid" src='${image}'/><h5>${name}</h5></div>`
         container.innerHTML += cardMovies;   
     });
 
@@ -26,7 +26,7 @@ fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}`)
 }).then((data) => {
     console.log(data);
     printingMovies(data.results);
-    document.addEventLis
+    //document.addEventListener('click','.showMovie');
     showMovies(data.results);
 }).catch((err) => {
     console.log('Ups! Ocurrio un error');
