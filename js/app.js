@@ -27,25 +27,20 @@ const showOneByOne = (id) => {
         return response.json();
     }).then((data) => {
         console.log(data);
+        let overview = data.overview;
+        let genres = data.genres;
+        let genresList = "<ul>";
+        for(let i =0; i < genres.length; i++){
+            console.log(genres[i]);
+            genresList += `<li>${genres[i].name}</li>`;
+        }
+        genresList += "</ul>";
+        console.log(genresList);
         const showMovie = document.getElementById('modal-body');
-        const templateMovieId = `<div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-        ...
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        </div>
-        </div>`;
+        const templateMovieId = genresList;
         showMovie.innerHTML = templateMovieId;
+        console.log(overview);
+        console.log(genresList);
         
     }).catch((err) => {
         debugger
